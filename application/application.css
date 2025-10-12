@@ -20,4 +20,6 @@
 }
 #calcDisplay {
 	-fx-min-width: 400px;
+	-fx-text-fill: white;
+	-fx-font-size: 30px;
 }
