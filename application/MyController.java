@@ -37,14 +37,25 @@ public class MyController {
         // Create tile at top (y = 0)
         TilePane tile = new TilePane(value, x, 0);
         TilesPane.getChildren().add(tile);
+        tile.setOnMouseEntered(e -> {
+        	if ((int)(Math.random()*10) == 7) {
+        		TilesPane.getChildren().remove(tile);
+        	}
+        });
         tile.setOnMouseClicked(e -> {
-			// On click, remove tile and update display
-			TilesPane.getChildren().remove(tile);
-			if (calcDisplay.getText().equals("0")) {
-				calcDisplay.setText(tile.getValue());
-			} else {
-				calcDisplay.setText(calcDisplay.getText() + tile.getValue());
-			}
+        	if ((int)(Math.random()*10) == 5) {
+        		if ((int)(Math.random()*4) == 1)
+        			calcDisplay.setText(tile.getValue() + calcDisplay.getText());
+        	}
+        	else {
+				// On click, remove tile and update display
+				TilesPane.getChildren().remove(tile);
+				if (calcDisplay.getText().equals("0")) {
+					calcDisplay.setText(tile.getValue());
+				} else {
+					calcDisplay.setText(calcDisplay.getText() + tile.getValue());
+				}
+        	}
 		});
         
         // Animate fall

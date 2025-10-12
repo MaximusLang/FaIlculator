@@ -1,41 +1,5 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
-/*.Rectangle {
-	-fx-stroke: black; 
-	-fx-stroke-width: 1; 
-	-fx-fill: lightgray;
-}
-
-#BasePane {
-	-fx-background-color: blue;
-	-fx-padding: 10px;
-}
-#ControlPane {
-	-fx-background-color: #363636;
-	-fx-border-color: black;
-	-fx-border-width: 5px;
-	-fx-max-height: 16px;
-	-fx-max-width: 840px;
-	-fx-padding: 50px;
-	
-}
-#calcDisplay {
-    -fx-min-width: 400px;
-    -fx-text-fill: #FFFFFF;
-    -fx-font-family: "Courier New", "Consolas", monospace;
-    -fx-font-size: 24px;
-    -fx-font-weight: bold;
-    -fx-background-color: #5555FF;
-    -fx-padding: 10;
-    -fx-border-color: #FFFFFF;
-    -fx-border-width: 2;
-}
-
-.label {
-	-fx-font-family: "Courier New", "Consolas", monospace;
-} */
-
 /* ================================
-   WINDOWS 95 RETRO THEME
+   WINDOWS 95 RETRO THEME 
    ================================ */
 
 /* Basic shapes */
