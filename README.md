@@ -51,7 +51,4 @@ Run Main.java in your IDE or via terminal:
 
 javac --module-path "path/to/javafx-sdk/lib" --add-modules javafx.controls,javafx.fxml application/Main.java
 java --module-path "path/to/javafx-sdk/lib" --add-modules javafx.controls,javafx.fxml application.Main
-
-Also, if you followed tutorials or referenced a certain material that might help the user to build that particular project, include links to those here as well.
-
-This is just a way to show your appreciation and also to help others get a first hand copy of the project.
+<img width="722" height="932" alt="Screenshot 2025-10-12 074744" src="https://github.com/user-attachments/assets/19ff3ad8-b3f8-4150-84f5-b83c9308a92c" />
