@@ -11,9 +11,9 @@
       <Pane fx:id="TilesPane" prefWidth="720" prefHeight="900"></Pane>
       <HBox fx:id="ControlPane" alignment="TOP_CENTER" spacing="10">
           <Label fx:id="calcDisplay"/>
-          <Button fx:id="Decimal" text="." />
-          <Button fx:id="Enter" text="Enter" />
-          <Button fx:id="Backspace" text="Backspace" />
+          <Button fx:id="Decimal" text="." onAction="#addDecimal"/>
+          <Button fx:id="Enter" text="Enter" onAction="#enter"/>
+          <Button fx:id="Backspace" text="Backspace" onAction="#backspace"/>
       </HBox>
 </StackPane>
  
