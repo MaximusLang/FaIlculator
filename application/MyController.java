@@ -19,10 +19,11 @@ public class MyController {
 	@FXML
 	StackPane BasePane = new StackPane();
 	
+	
 	@FXML
 	public Pane TilesPane = new Pane();
 	
-	private void spawnTile() {
+	/*private void spawnTile() {
         // Random value: 70% digit, 30% operator
         String value;
         if (Math.random() < 0.7) {
@@ -35,11 +36,16 @@ public class MyController {
         double x = Math.random() * (TilesPane.getWidth() - 50);
         
         // Create tile at top (y = 0)
-        TilePane tile = new TilePane(value, x, 0);
+        TilePane tile = new TilePane(value, x, 0, 7);
         TilesPane.getChildren().add(tile);
         tile.setOnMouseEntered(e -> {
         	if ((int)(Math.random()*10) == 7) {
         		TilesPane.getChildren().remove(tile);
+        	}
+        	else if ((int)(Math.random()*10) >= 5) {
+        	        if (fall != null) {
+        	            fall.setRate(fall.getRate() * 2);
+        	        }
         	}
         });
         tile.setOnMouseClicked(e -> {
@@ -59,11 +65,60 @@ public class MyController {
 		});
         
         // Animate fall
-        TranslateTransition fall = new TranslateTransition(Duration.seconds(7), tile);
+        TranslateTransition fall = new TranslateTransition(Duration.seconds(tile.duration), tile);
         fall.setByY(TilesPane.getHeight());
         fall.setOnFinished(e -> TilesPane.getChildren().remove(tile)); // Remove when reaches bottom
         fall.play();
-    }
+    }*/
+	private void spawnTile() {
+	    // Random value: 70% digit, 30% operator
+	    String value;
+	    if (Math.random() < 0.7) {
+	        value = String.valueOf((int)(Math.random() * 10)); // 0-9
+	    } else {
+	        value = getRandomOperator(); // +, -, *, /
+	    }
+	    
+	    // Random X position (keep tile within bounds)
+	    double x = Math.random() * (TilesPane.getWidth() - 50);
+	    
+	    // Create tile at top (y = 0)
+	    TilePane tile = new TilePane(value, x, 0, 7);
+	    TilesPane.getChildren().add(tile);
+	    
+	    // Animate fall - CREATE THIS FIRST
+	    TranslateTransition fall = new TranslateTransition(Duration.seconds(tile.duration), tile);
+	    fall.setByY(TilesPane.getHeight());
+	    fall.setOnFinished(e -> TilesPane.getChildren().remove(tile));
+	    tile.setFallTransition(fall);  // Store reference in tile
+	    fall.play();
+	    
+	    // Now set up hover behavior (AFTER fall exists)
+	    tile.setOnMouseEntered(e -> {
+	        if ((int)(Math.random()*10) == 7) {
+	            TilesPane.getChildren().remove(tile); 
+	        }
+	        else if ((int)(Math.random()*15) == 5) {
+	            tile.speedUp();  // Use the tile's method
+	        }
+	    });
+	    
+	    tile.setOnMouseClicked(e -> {
+	        if ((int)(Math.random()*10) == 5) {
+	            if ((int)(Math.random()*4) == 1)
+	                calcDisplay.setText(tile.getValue() + calcDisplay.getText());
+	        }
+	        else {
+	            // On click, remove tile and update display
+	            TilesPane.getChildren().remove(tile);
+	            if (calcDisplay.getText().equals("0")) {
+	                calcDisplay.setText(tile.getValue());
+	            } else {
+	                calcDisplay.setText(calcDisplay.getText() + tile.getValue());
+	            }
+	        }
+	    });
+	}
     
     private String getRandomOperator() {
         String[] operators = {"+", "-", "*", "/"};
