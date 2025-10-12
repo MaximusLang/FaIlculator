@@ -9,7 +9,7 @@
       xmlns="http://javafx.com/javafx/23.0.1" 
       xmlns:fx="http://javafx.com/fxml/1">
       <Pane fx:id="TilesPane" prefWidth="720" prefHeight="900"></Pane>
-      <HBox fx:id="ControlPane" alignment="TOP_CENTER" spacing="10" prefWidth="1600" prefHeight="64">
+      <HBox fx:id="ControlPane" alignment="TOP_CENTER" spacing="10">
           <Label fx:id="calcDisplay"/>
           <Button fx:id="Decimal" text="." />
           <Button fx:id="Enter" text="Enter" />
