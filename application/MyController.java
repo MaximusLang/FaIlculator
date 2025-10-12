@@ -206,7 +206,8 @@ public class MyController {
 	        for (int i = 0; i < expression.length(); i++) {
 	            char c = expression.charAt(i);
 	            
-	            if (Character.isDigit(c) || c == '.') {
+	            if (Character.isDigit(c) || c == '.'
+	            		|| (i == 0 && c == '+' || c == '-')) {
 	                currentNumber += c;
 	            } else if (c == '*' || c == '/' || c == '+' || c == '-') {
 	                operands.add(currentNumber);
