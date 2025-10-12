@@ -7,11 +7,8 @@ import java.lang.Math;
 import javafx.animation.TranslateTransition;
 import javafx.util.Duration;
 import javafx.animation.KeyFrame;
-import javafx.scene.shape.Line;
 import javafx.event.ActionEvent;
 import java.util.ArrayList;
-
-
 import javafx.fxml.FXML;
 
 
@@ -19,59 +16,11 @@ public class MyController {
 	@FXML
 	StackPane BasePane = new StackPane();
 	
-	
 	@FXML
 	public Pane TilesPane = new Pane();
 	
-	/*private void spawnTile() {
-        // Random value: 70% digit, 30% operator
-        String value;
-        if (Math.random() < 0.7) {
-            value = String.valueOf((int)(Math.random() * 10)); // 0-9
-        } else {
-            value = getRandomOperator(); // +, -, *, /
-        }
-        
-        // Random X position (keep tile within bounds)
-        double x = Math.random() * (TilesPane.getWidth() - 50);
-        
-        // Create tile at top (y = 0)
-        TilePane tile = new TilePane(value, x, 0, 7);
-        TilesPane.getChildren().add(tile);
-        tile.setOnMouseEntered(e -> {
-        	if ((int)(Math.random()*10) == 7) {
-        		TilesPane.getChildren().remove(tile);
-        	}
-        	else if ((int)(Math.random()*10) >= 5) {
-        	        if (fall != null) {
-        	            fall.setRate(fall.getRate() * 2);
-        	        }
-        	}
-        });
-        tile.setOnMouseClicked(e -> {
-        	if ((int)(Math.random()*10) == 5) {
-        		if ((int)(Math.random()*4) == 1)
-        			calcDisplay.setText(tile.getValue() + calcDisplay.getText());
-        	}
-        	else {
-				// On click, remove tile and update display
-				TilesPane.getChildren().remove(tile);
-				if (calcDisplay.getText().equals("0")) {
-					calcDisplay.setText(tile.getValue());
-				} else {
-					calcDisplay.setText(calcDisplay.getText() + tile.getValue());
-				}
-        	}
-		});
-        
-        // Animate fall
-        TranslateTransition fall = new TranslateTransition(Duration.seconds(tile.duration), tile);
-        fall.setByY(TilesPane.getHeight());
-        fall.setOnFinished(e -> TilesPane.getChildren().remove(tile)); // Remove when reaches bottom
-        fall.play();
-    }*/
 	private void spawnTile() {
-	    // Random value: 70% digit, 30% operator
+	    // Random value: 70% chance digit, 30% chance operator
 	    String value;
 	    if (Math.random() < 0.7) {
 	        value = String.valueOf((int)(Math.random() * 10)); // 0-9
@@ -96,17 +45,17 @@ public class MyController {
 	    // Now set up hover behavior (AFTER fall exists)
 	    tile.setOnMouseEntered(e -> {
 	        if ((int)(Math.random()*10) == 7) {
-	            TilesPane.getChildren().remove(tile); 
+	            TilesPane.getChildren().remove(tile); //10% chance of disappearing tile on mouse hover
 	        }
 	        else if ((int)(Math.random()*15) == 5) {
-	            tile.speedUp();  // Use the tile's method
+	            tile.speedUp();  // 6.7% chance tile will speed up on mouse hover
 	        }
 	    });
-	    
+	   
 	    tile.setOnMouseClicked(e -> {
-	        if ((int)(Math.random()*10) == 5) {
+	        if ((int)(Math.random()*10) == 7) {
 	            if ((int)(Math.random()*4) == 1)
-	                calcDisplay.setText(tile.getValue() + calcDisplay.getText());
+	                calcDisplay.setText(tile.getValue() + calcDisplay.getText()); //2.5% chance of concatenating w/o deleting & 7.5% chance of doing nothing
 	        }
 	        else {
 	            // On click, remove tile and update display
@@ -137,6 +86,7 @@ public class MyController {
 	Button decimal = new Button(".");
 	
 	@FXML
+	//adds decimals to string in display
 	public void addDecimal(ActionEvent e) {
 		try {
 			calcDisplay.setText(calcDisplay.getText() + ".");
@@ -149,6 +99,7 @@ public class MyController {
 	Button enter = new Button("Enter");
 	
 	@FXML
+	//calculates and displays result in display with exception handling
 	public void enter(ActionEvent e) {
 		String result = "";
 		try {
@@ -206,9 +157,12 @@ public class MyController {
 	        for (int i = 0; i < expression.length(); i++) {
 	            char c = expression.charAt(i);
 	            
+	            //adds character to current number if it is a digit OR if it's the first sign (+ or -)
 	            if (Character.isDigit(c) || c == '.'
 	            		|| (i == 0 && c == '+' || c == '-')) {
 	                currentNumber += c;
+	                
+	            //ends current number and stores operator otherwise
 	            } else if (c == '*' || c == '/' || c == '+' || c == '-') {
 	                operands.add(currentNumber);
 	                operators.add(String.valueOf(c));
@@ -217,6 +171,7 @@ public class MyController {
 	        }
 	        operands.add(currentNumber); // Add last number
 	        
+	        //Performs multiplication and division first between operands (following PEMDAS)
 	        // PASS 1: Handle * and /
 	        for (int i = 0; i < operators.size(); i++) {
 	            if (operators.get(i).equals("*")) {
@@ -236,6 +191,7 @@ public class MyController {
 	            }
 	        }
 	        
+	        //Performs addition and subtraction
 	        // PASS 2: Handle + and -
 	        for (int i = 0; i < operators.size(); i++) {
 	            if (operators.get(i).equals("+")) {

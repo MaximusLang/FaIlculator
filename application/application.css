@@ -73,7 +73,7 @@
     -fx-text-fill: black;
 }
 
-/* Number tiles (your falling squares or buttons) */
+/* Number tiles */
 .tile {
     -fx-background-color: #c0c0c0;
     -fx-border-color: #ffffff #808080 #808080 #ffffff;
@@ -85,9 +85,6 @@
     -fx-pref-width: 50px;
     -fx-pref-height: 50px;
 }
-.tile:pressed {
-    -fx-border-color: #808080 #ffffff #ffffff #808080;
-    -fx-background-color: #a0a0a0;
-}
+
 
 
