@@ -1,5 +1,5 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
-.Rectangle {
+/*.Rectangle {
 	-fx-stroke: black; 
 	-fx-stroke-width: 1; 
 	-fx-fill: lightgray;
@@ -19,7 +19,111 @@
 	
 }
 #calcDisplay {
-	-fx-min-width: 400px;
-	-fx-text-fill: white;
-	-fx-font-size: 30px;
+    -fx-min-width: 400px;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: "Courier New", "Consolas", monospace;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-background-color: #5555FF;
+    -fx-padding: 10;
+    -fx-border-color: #FFFFFF;
+    -fx-border-width: 2;
 }
+
+.label {
+	-fx-font-family: "Courier New", "Consolas", monospace;
+} */
+
+/* ================================
+   WINDOWS 95 RETRO THEME
+   ================================ */
+
+/* Basic shapes */
+.Rectangle {
+    -fx-stroke: black;
+    -fx-stroke-width: 1;
+    -fx-fill: #c0c0c0; /* classic light gray */
+}
+
+/* Base background — like Win95 desktop */
+#BasePane {
+    -fx-background-color: #02A5FF; /* teal desktop */
+    -fx-padding: 10px;
+}
+
+/* Top control bar (like a window title bar + frame) */
+#ControlPane {
+    -fx-background-color: #c0c0c0;
+    -fx-border-color: #ffffff #808080 #808080 #ffffff; /* beveled raised border */
+    -fx-border-width: 3px;
+    -fx-max-height: 120px;
+    -fx-max-width: 840px;
+    -fx-padding: 20px;
+}
+
+/* Optional "title bar" feel for top labels inside ControlPane */
+.title-bar {
+    -fx-background-color: #000080;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 4 0 4 8;
+    -fx-font-family: "Tahoma";
+}
+
+/* Display (calculator/text display area) */
+#calcDisplay {
+    -fx-min-width: 400px;
+    -fx-text-fill: black;
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 16px;
+    -fx-background-color: white;
+    -fx-padding: 6;
+    -fx-border-color: #808080 #ffffff #ffffff #808080; /* inset border */
+    -fx-border-width: 2px;
+}
+
+/* Buttons — Win95 style */
+.button {
+    -fx-background-color: #c0c0c0;
+    -fx-border-color: #ffffff #808080 #808080 #ffffff;
+    -fx-border-width: 2px;
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 12px;
+    -fx-text-fill: black;
+    -fx-padding: 4 10 4 10;
+}
+
+/* Hover/pressed effects */
+.button:hover {
+    -fx-background-color: #d8d8d8;
+}
+.button:pressed {
+    -fx-border-color: #808080 #ffffff #ffffff #808080;
+    -fx-background-color: #a0a0a0;
+}
+
+/* Labels / text */
+.label {
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 12px;
+    -fx-text-fill: black;
+}
+
+/* Number tiles (your falling squares or buttons) */
+.tile {
+    -fx-background-color: #c0c0c0;
+    -fx-border-color: #ffffff #808080 #808080 #ffffff;
+    -fx-border-width: 3px;
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 14px;
+    -fx-text-fill: black;
+    -fx-alignment: center;
+    -fx-pref-width: 50px;
+    -fx-pref-height: 50px;
+}
+.tile:pressed {
+    -fx-border-color: #808080 #ffffff #ffffff #808080;
+    -fx-background-color: #a0a0a0;
+}
+
+

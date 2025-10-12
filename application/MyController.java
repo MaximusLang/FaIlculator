@@ -109,6 +109,14 @@ public class MyController {
 	}
 	
 	@FXML
+	Button Clear = new Button();
+
+	@FXML
+	public void clear(ActionEvent e) {
+	    calcDisplay.setText("0");
+	}
+	
+	@FXML
 	public void initialize() {
 		// Initialization code here
 		int x = (int)Math.random()*9;
