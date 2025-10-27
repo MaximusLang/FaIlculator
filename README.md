@@ -6,6 +6,7 @@ However, in order to keep the user-friendliness to a minimum, these tiles do not
 - randomly disappear when mouse hovers over them
 - "die", or not send value to expression
 - speed up to avoid being clicked
+
 Despite these bugs, the logic of the calculator is completely sound, with a scratch-built arithmetic algorithm that correctly implements order of operations, accepts negative values, and identifies arithmetic logic and syntax errors.
 
 **Architecture Overview**
