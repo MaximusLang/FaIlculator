@@ -36,18 +36,18 @@ Prerequisites
 
 **Running Locally**
 
-1. Clone the Repository
+1. Clone the Repository </br>
 
-git clone https://github.com/<your-username>/FaIlculator.git
+git clone https://github.com/MaximusLang/FaIlculator.git
 
 cd FaIlculator
 
-2. Set Up JavaFX (if needed)
+2. Set Up JavaFX (if needed) </br>
 Add the JavaFX SDK path to your run configuration:
 
 --module-path "path/to/javafx-sdk/lib" --add-modules javafx.controls,javafx.fxml
 
-3. Run the App
+3. Run the App </br>
 Run Main.java in your IDE or via terminal:
 
 javac --module-path "path/to/javafx-sdk/lib" --add-modules javafx.controls,javafx.fxml application/Main.java
